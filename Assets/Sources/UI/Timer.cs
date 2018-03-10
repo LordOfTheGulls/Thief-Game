@@ -27,5 +27,5 @@ public class Timer : MonoBehaviour {
     private void FixedUpdate(){
         TimerCounter.text = Mathf.Floor((Counter -= Time.deltaTime) / 60).ToString("00 ") + ":" + Mathf.Floor(Counter % 60).ToString(" 00");
     }
- 
+
 }
