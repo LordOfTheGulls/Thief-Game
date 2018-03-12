@@ -5,12 +5,20 @@ using UnityEngine.UI;
 
 public class ScoreCounter : MonoBehaviour {
 
+    public GameObject ScoreWin;
     public Text scoreBoard;
 	private int Score=0;
 
-	public void ScoreCount(int givenPoints)
+    public void Update()
+    {
+        if(ScoreWin.active == true)
+        {
+            ScoreWin.GetComponent<Text>().text = scoreBoard.text + " SCORE !";
+        }
+    }
+    public void ScoreCount(int givenPoints)
     {
         Score += givenPoints;
-        scoreBoard.text = "Score: " + Score;
+        scoreBoard.text = Score.ToString();
     }
 }
