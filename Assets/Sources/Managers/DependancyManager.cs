@@ -28,7 +28,7 @@ public class DependancyManager : MonoBehaviour
     {
         //Dependancies
         PlayerObject = GameObject.FindWithTag("Player");
-        SpawnLocation = GameObject.FindWithTag("Spawn").transform.position;
+        //SpawnLocation = GameObject.FindWithTag("Spawn").transform.position;
 
         PlayerController = PlayerObject.GetComponent<PlayerController>();
         CamController = Camera.main.GetComponent<CameraController>();
@@ -42,7 +42,7 @@ public class DependancyManager : MonoBehaviour
         //Component Assignment Checks
         //if (PlatformsLayer.value.ToString() == "Nothing" || PickableLayer.value.ToString() == "Nothing") { Debug.Log("[DEPENDANCY ERROR]LayerMasks are missing!"); return; }
         if (PlayerObject == null) { Debug.Log("[DEPENDANCY ERROR] An Object with the tag (Player), hasn't been found!"); return; }
-        if (SpawnLocation == null) { Debug.Log("[DEPENDANCY ERROR] An Object with the tag (Spawn), hasn't been found!"); return; }
+        //if (SpawnLocation == null) { Debug.Log("[DEPENDANCY ERROR] An Object with the tag (Spawn), hasn't been found!"); return; }
         if (PlayerController == null) { Debug.Log("[DEPENDANCY ERROR] A Script with the name (Controller), hasn't been found!"); return; }
         
 
@@ -53,6 +53,6 @@ public class DependancyManager : MonoBehaviour
 
         DependanciesLoaded = true;
 
-        Debug.Log("<color=blue>[Dependancies for this Scene has been SUCCESSFULLY LOADED]</color>");
+        Debug.Log("<color=blue>[Dependancies for this Scene has been SUCCESSFULLY LOADED!]</color>");
     }
 }
