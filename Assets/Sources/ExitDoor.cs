@@ -39,7 +39,7 @@ public class ExitDoor : MonoBehaviour {
 
 
                 isPlaying = false;
-                WinObject.active = true;
+                WinObject.SetActive(true);
 
                 Delay = 0;
             }

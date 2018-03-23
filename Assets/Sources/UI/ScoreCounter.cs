@@ -11,7 +11,7 @@ public class ScoreCounter : MonoBehaviour {
 
     public void Update()
     {
-        if(ScoreWin.active == true)
+        if(ScoreWin.activeSelf == true)
         {
             ScoreWin.GetComponent<Text>().text = scoreBoard.text + " SCORE !";
         }

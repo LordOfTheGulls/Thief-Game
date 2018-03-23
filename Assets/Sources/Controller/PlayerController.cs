@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour {
@@ -15,7 +16,6 @@ public class PlayerController : MonoBehaviour {
     private float initialspeed;
 
     Animator movement;
-    private SpriteRenderer spr;
     bool sideSwitched;
     private Rigidbody2D playerRB2D;
 
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     [HideInInspector]
     public float PlayerExtentsX;
+
     [HideInInspector]
     public float PlayerExtentsY;
 
@@ -31,9 +32,19 @@ public class PlayerController : MonoBehaviour {
 
     private bool isrInDoorTransition;
 
+    public void OnDoorTransitionStart(object source, Vector3 TargetLocation)
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void OnDoorTransitionEnd(object source, Vector3 TargetLocation)
+    {
+        gameObject.SetActive(true);
+        transform.position = TargetLocation;
+    }
+
     private void Awake()
     {
-        spr = GetComponent<SpriteRenderer>();
         playerRB2D = GetComponent<Rigidbody2D>();
         movement = GetComponent<Animator>();
         PlayerCollider = GetComponent<CapsuleCollider2D>();
@@ -71,12 +82,10 @@ public class PlayerController : MonoBehaviour {
                 if (moveHorizontal < 0 && sideSwitched == false) { transform.Rotate(Vector3.up * 180); sideSwitched = true; } // rotate player to walk back
                 else if (moveHorizontal > 0 && sideSwitched == true) { transform.Rotate(-Vector3.up * 180); sideSwitched = false; }
             }
-            else movement.Play("idle");
         }
         else
         {
             playerRB2D.velocity = Vector3.zero;
         }
-
     }
 }

@@ -26,7 +26,6 @@ public class Timer : MonoBehaviour
         Counter = TotalTime;
 
         isTimerActive = true;
-
     }
 
     private void FixedUpdate() { RunTimer(true); }
@@ -60,7 +59,7 @@ public class Timer : MonoBehaviour
             {
 
                 //[SET THE TIMER AND REWIND THE ANIMATION -> WHEN OUT OF TIME]
-                TimerCounter.text = "00 : 00";      isTimerOn = false;      RunTimerAnimation(false);     
+                TimerCounter.text = "00 : 00";  isTimerActive = isTimerOn = false;      RunTimerAnimation(false);     
             }
         }
     }
