@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be407bf9fb00ec41849a99d8a01e8fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Locked: 0
+  Locked: 1
   TransitionDelay: 0.5
   FirstDoor: {fileID: 159905954}
   SecondDoor: {fileID: 1306603906}
@@ -969,7 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LinkPreview: 1
-  IsDoorLocked: 0
+  IsDoorLocked: 1
   IsPlayerInRange: 0
   IsInTransition: 0
   IsAudioDelayed: 0
