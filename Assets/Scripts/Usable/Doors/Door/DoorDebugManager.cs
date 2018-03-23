@@ -36,6 +36,7 @@ public class DoorDebugManager : MonoBehaviour
     }
 
     //[DEBUG PREVIEW] 
+    [ExecuteInEditMode]
     private void Start(){OnDrawGizmosSelected(); DoorController = GetComponent<DoorController>(); }
     private void Update(){if(IsInTransition) { OnDrawGizmosSelected(); } IsDoorLocked = DoorController.Locked; }
 
@@ -52,7 +53,12 @@ public class DoorDebugManager : MonoBehaviour
 
                 IsSelected = false; Gizmos.color = new Color(0, 255, 0, 0.3f);
             }
-            else if(IsDoorLocked == true)
+            else if(IsSelected == false || IsDoorLocked == false)
+            {
+                Gizmos.color = new Color(255, 0, 0, 0.35f);
+            }
+
+            if(IsDoorLocked == true)
             {
                 ControlDoorGizmo = "door_locked_point.png";
                 ExitDoorGizmo = "door_locked_point.png";
@@ -63,8 +69,6 @@ public class DoorDebugManager : MonoBehaviour
             {
                 ControlDoorGizmo = "door_control_point.png";
                 ExitDoorGizmo = "door_exit_point.png";
-
-                Gizmos.color = new Color(255, 0, 0, 0.35f);
             }
                 
             if (MidPoint.x > transform.GetChild(0).position.x + 1 || MidPoint.x < transform.GetChild(0).position.x - 1){
