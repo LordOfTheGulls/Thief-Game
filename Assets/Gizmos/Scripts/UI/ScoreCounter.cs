@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreCounter : MonoBehaviour {
-
+public class ScoreCounter : MonoBehaviour { 
     public GameObject ScoreWin;
     public Text scoreBoard;
 	private int Score=0;
-
+ 
     public void Update()
     {
         if(ScoreWin.activeSelf == true)

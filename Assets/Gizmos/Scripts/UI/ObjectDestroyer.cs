@@ -10,7 +10,9 @@ public class ObjectDestroyer : MonoBehaviour
 
     public ScoreCounter totalScore;
     public int Score;
+    public float PickDelay;
     private GameObject player;
+    private float TimeElapsed;
     // Use this for initialization
     void Start()
     {
@@ -21,20 +23,30 @@ public class ObjectDestroyer : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButton("Fire1"))    // left ctrl
-        {
+
             Vector2 relativePoint = gameObject.transform.position;
             Vector2 playerPoint = player.transform.position;
             double relativeX, relativeY;
             relativeX = playerPoint.x - relativePoint.x;
             relativeY = player.transform.position.y - gameObject.transform.position.y;
 
-            if ((relativeX <= 1 && relativeX >= -1) && (relativeY <= 1 && relativeY >= -1))
-            {
-                Destroy(gameObject);
-                totalScore.ScoreCount(Score);
-            }
+        if (Input.GetButton("Fire1") && (relativeX <= 1 && relativeX >= -1) && (relativeY <= 1 && relativeY >= -1))
+        {
+              TimeElapsed += Time.deltaTime;
+
+             if (TimeElapsed >= PickDelay)
+             {
+                 Destroy(gameObject);
+                 totalScore.ScoreCount(Score);
+             }
+             else
+             {
+              
+             }
+        }
+        else
+        {
+            TimeElapsed = 0;
         }
     }
-
 }
